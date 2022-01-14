@@ -4,23 +4,12 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-//Declaring the api url that will provide data for the client app
 const apiUrl = 'https://jakesmoviedb.herokuapp.com/';
 const token = localStorage.getItem('token');
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
+
 export class UserRegistrationService {
-  // Inject the HttpClient module to the constructor params
-  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
-  }
-  // Making the api call for the user registration endpoint
-  public userRegistration(userDetails: any): Observable<any> {
-    console.log(userDetails);
-    return this.http.post(apiUrl + 'users', userDetails).pipe(
-      catchError(this.handleError)
-    );
   }
 
   private handleError(error: HttpErrorResponse): any {
@@ -35,14 +24,12 @@ export class UserRegistrationService {
       'Something bad happened; please try again later.');
   }
 
-  // Non-typed response extraction
   private extractResponseData(res: any): any {
     const body = res;
     return body || {};
   }
 
   getMovies(): Observable<any> {
-
     return this.http.get(apiUrl + 'movies', {
       headers: new HttpHeaders(
         {
@@ -117,7 +104,7 @@ export class UserRegistrationService {
   }
 
   updateUser(): Observable<any> {
-    return this.http.get(apiUrl + 'users/:Username', {
+    return this.http.put(apiUrl + 'users/:Username', {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
