@@ -89,22 +89,25 @@ export class UserRegistrationService {
     );
   }
 
-  registerUser(): Observable<any> {
-    return this.http.post(apiUrl + 'users', {}).pipe(
+  userRegister(userData: any): Observable<any> {
+    console.log(userData);
+    return this.http.post(apiUrl + 'users', userData,
+      { responseType: 'text' }
+    ).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
 
-  loginUser(): Observable<any> {
-    return this.http.post(apiUrl + 'users', {}).pipe(
+  loginUser(loginData: any): Observable<any> {
+    return this.http.post(apiUrl + 'users', loginData).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
 
-  updateUser(): Observable<any> {
-    return this.http.put(apiUrl + 'users/:Username', {
+  updateUser(userData: any): Observable<any> {
+    return this.http.put(apiUrl + 'users/:Username', userData, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -116,7 +119,7 @@ export class UserRegistrationService {
   }
 
   deleteUser(): Observable<any> {
-    return this.http.get(apiUrl + 'users/:Username', {
+    return this.http.delete(apiUrl + 'users/:Username', {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
@@ -139,8 +142,8 @@ export class UserRegistrationService {
     );
   }
 
-  addFavorite(): Observable<any> {
-    return this.http.post(apiUrl + 'users/:Username/movies/:Title', {
+  addFavorite(movie: any): Observable<any> {
+    return this.http.post(apiUrl + 'users/:Username/movies/:Title', movie, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,
