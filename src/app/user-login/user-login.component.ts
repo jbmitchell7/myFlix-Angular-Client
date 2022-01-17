@@ -23,11 +23,13 @@ export class UserLoginComponent implements OnInit {
   login(): void {
     this.apiLogin.loginUser(this.userCredentials).subscribe((result) => {
       this.dialogRef.close();
+      localStorage.setItem('user', result.user.Username);
+      localStorage.setItem('token', result.token);
+      console.log(localStorage.getItem('user'));
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });
     }, (result) => {
-      console.log(result);
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });

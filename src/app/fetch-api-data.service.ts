@@ -100,8 +100,7 @@ export class UserRegistrationService {
   }
 
   loginUser(loginData: any): Observable<any> {
-    console.log(loginData);
-    return this.http.post(apiUrl + 'users', loginData).pipe(
+    return this.http.post(apiUrl + 'login', loginData).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
