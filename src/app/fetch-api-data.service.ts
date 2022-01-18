@@ -29,7 +29,7 @@ export class UserRegistrationService {
     return body || {};
   }
 
-  getMovies(): Observable<any> {
+  getAllMovies(): Observable<any> {
     return this.http.get(apiUrl + 'movies', {
       headers: new HttpHeaders(
         {
