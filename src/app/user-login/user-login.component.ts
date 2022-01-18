@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -15,7 +16,8 @@ export class UserLoginComponent implements OnInit {
   constructor(
     public apiLogin: UserRegistrationService,
     public dialogRef: MatDialogRef<UserLoginComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +27,7 @@ export class UserLoginComponent implements OnInit {
       this.dialogRef.close();
       localStorage.setItem('user', result.user.Username);
       localStorage.setItem('token', result.token);
-      console.log(localStorage.getItem('user'));
+      this.router.navigate(['movies']);
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });
