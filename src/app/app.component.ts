@@ -14,6 +14,10 @@ export class AppComponent {
     public snackBar: MatSnackBar,
     public router: Router) { }
 
+  viewProfile(): void {
+    this.router.navigate([`users/${localStorage.getItem('user')}`]);
+  }
+
   logout(): void {
     localStorage.setItem('user', '');
     localStorage.setItem('token', '');

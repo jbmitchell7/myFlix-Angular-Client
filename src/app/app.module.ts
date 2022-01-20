@@ -23,10 +23,14 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MovieSynopsisComponent } from './movie-synopsis/movie-synopsis.component';
 import { DirectorSynopsisComponent } from './director-synopsis/director-synopsis.component';
 import { GenreSynopsisComponent } from './genre-synopsis/genre-synopsis.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+
+const username = localStorage.getItem('user');
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: `users/${username}`, component: UserProfileComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -39,7 +43,8 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     MovieSynopsisComponent,
     DirectorSynopsisComponent,
-    GenreSynopsisComponent
+    GenreSynopsisComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
