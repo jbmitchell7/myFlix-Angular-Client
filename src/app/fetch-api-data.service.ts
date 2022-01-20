@@ -41,44 +41,8 @@ export class UserRegistrationService {
     );
   }
 
-  getMovie(): Observable<any> {
-    return this.http.get(apiUrl + 'movies/:Title', {
-      headers: new HttpHeaders(
-        {
-          Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
-  }
-
-  getGenre(): Observable<any> {
-    return this.http.get(apiUrl + 'movies/Genres/:Name', {
-      headers: new HttpHeaders(
-        {
-          Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
-  }
-
-  getDirector(): Observable<any> {
-    return this.http.get(apiUrl + 'movies/Directors/:Name', {
-      headers: new HttpHeaders(
-        {
-          Authorization: 'Bearer ' + token,
-        })
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
-  }
-
-  getUser(): Observable<any> {
-    return this.http.get(apiUrl + 'users/:Username', {
+  getUser(username: any): Observable<any> {
+    return this.http.get(`${apiUrl}users/${username}`, {
       headers: new HttpHeaders(
         {
           Authorization: 'Bearer ' + token,

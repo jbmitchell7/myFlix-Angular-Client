@@ -13,6 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -59,6 +61,8 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatIconModule,
     MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
   ],
