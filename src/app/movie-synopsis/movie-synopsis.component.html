@@ -1,1 +1,9 @@
-<p>movie-synopsis works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{data.title}}</mat-card-title>
+        <mat-card-subtitle>Directed by: {{data.director}}</mat-card-subtitle>
+    </mat-card-header>
+    <img src={{data.image}} />
+    <mat-card-content>Genre: {{data.genre}}</mat-card-content>
+    <mat-card-content>Synopsis: {{data.description}}</mat-card-content>
+</mat-card>
