@@ -24,9 +24,9 @@ export class UserRegistrationFormComponent implements OnInit {
   //sends user registration data to Mongo
   registerUser(): void {
     this.fetchApiData.userRegister(this.userData).subscribe((result) => {
-      // Logic for a successful user registration goes here! (To be implemented)
+      console.log(result);
       this.dialogRef.close();
-      this.snackBar.open(result, 'OK', {
+      this.snackBar.open(`${this.userData.Username} has been registered.`, 'OK', {
         duration: 2000
       });
     }, (result) => {

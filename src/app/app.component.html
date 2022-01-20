@@ -1,5 +1,11 @@
-<router-outlet>
-    <div ngClass="background">
-
-    </div>
-</router-outlet>
+<mat-toolbar color='primary' ngClass="navigation">
+    <button mat-icon-button class="menu-icon" aria-label="menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>JakesMovieDB</span>
+    <span class="spacer"></span>
+    <button mat-raised-button color="basic" (click)="logout()">
+        Logout
+    </button>
+</mat-toolbar>
+<router-outlet></router-outlet>
