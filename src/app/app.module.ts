@@ -20,6 +20,9 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
 import { UserLoginComponent } from './user-login/user-login.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { MovieSynopsisComponent } from './movie-synopsis/movie-synopsis.component';
+import { DirectorSynopsisComponent } from './director-synopsis/director-synopsis.component';
+import { GenreSynopsisComponent } from './genre-synopsis/genre-synopsis.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -33,7 +36,10 @@ const appRoutes: Routes = [
     UserRegistrationFormComponent,
     UserLoginComponent,
     MovieCardComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    MovieSynopsisComponent,
+    DirectorSynopsisComponent,
+    GenreSynopsisComponent
   ],
   imports: [
     BrowserModule,
