@@ -29,11 +29,11 @@ export class UserLoginComponent implements OnInit {
       localStorage.setItem('token', result.token);
       this.router.navigate(['movies']);
       this.snackBar.open(`${result.user.Username} has logged in.`, 'OK', {
-        duration: 2000
+        duration: 1000
       });
     }, (result) => {
       this.snackBar.open('Login failed.', 'OK', {
-        duration: 2000
+        duration: 1000
       });
     });
   }

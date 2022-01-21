@@ -25,10 +25,16 @@
                 movie.Description, 
                 movie.ImagePath, 
                 movie.Director.Name, 
-                movie.Genre.Name)">
+                movie.Genre.Name
+            )">
                 Synopsis
             </button><br>
-            <mat-icon>favorite_border</mat-icon>
+            <button mat-mini-fab (click)="addToFavorites(movie._id)">
+                <mat-icon>favorite_border</mat-icon>
+            </button>
+            <button mat-mini-fab color='warn' (click)="removeFromFavorites(movie._id)">
+                <mat-icon>delete_outline</mat-icon>
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>

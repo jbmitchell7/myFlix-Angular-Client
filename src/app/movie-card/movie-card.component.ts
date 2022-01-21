@@ -4,17 +4,19 @@ import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.compone
 import { MatDialog } from '@angular/material/dialog';
 import { DirectorSynopsisComponent } from '../director-synopsis/director-synopsis.component';
 import { GenreSynopsisComponent } from '../genre-synopsis/genre-synopsis.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   constructor(
     public fetchApiData: UserRegistrationService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getMovies();
@@ -25,6 +27,26 @@ export class MovieCardComponent {
       this.movies = resp;
       return this.movies;
     });
+  }
+
+  addToFavorites(movie: any): void {
+    const user = localStorage.getItem('user');
+    this.fetchApiData.addFavorite(user, movie).subscribe((resp: any) => {
+      console.log(resp);
+      this.snackBar.open('Added to Favorites.', 'OK', {
+        duration: 1000
+      });
+    })
+  }
+
+  removeFromFavorites(movie: any): void {
+    const user = localStorage.getItem('user');
+    this.fetchApiData.removeFavorite(user, movie).subscribe((resp: any) => {
+      console.log(resp);
+      this.snackBar.open('Removed from Favorites.', 'OK', {
+        duration: 1000
+      });
+    })
   }
 
   openMovieSynopsisDialog(title: string, description: string, image: string, director: string, genre: string): void {

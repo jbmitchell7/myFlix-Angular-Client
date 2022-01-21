@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,12 +11,14 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
 
   user: any;
+  favorites: any[] = [];
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
     public fetchApiData: UserRegistrationService,
-    public router: Router
+    public router: Router,
+    public snackBar: MatSnackBar
   ) { }
 
   backToMovies(): void {
@@ -26,7 +29,7 @@ export class UserProfileComponent implements OnInit {
     this.getUserProfile();
   }
 
-  dateConvert = (dateInput: any) => {
+  dateConvert(dateInput: any) {
     let year = dateInput.substr(0, 4);
     let month = dateInput.substr(5, 2);
     let day = dateInput.substr(8, 2);
@@ -37,8 +40,22 @@ export class UserProfileComponent implements OnInit {
   getUserProfile(): void {
     this.fetchApiData.getUser(localStorage.getItem('user')).subscribe((resp: any) => {
       this.user = resp;
+      this.favorites = resp.FavoriteMovies;
       return this.user;
     });
   }
 
+  updateUserProfile(): void {
+    this.fetchApiData.updateUser(this.userData).subscribe((res) => {
+      console.log(res);
+      this.snackBar.open(`${this.userData.Username} has been updated.`, 'OK', {
+        duration: 1000
+      });
+    }, (res) => {
+      console.log(res);
+      this.snackBar.open(res, 'OK', {
+        duration: 1000
+      })
+    })
+  }
 }

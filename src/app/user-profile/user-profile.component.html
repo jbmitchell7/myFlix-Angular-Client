@@ -6,8 +6,8 @@
         <mat-card-content>
             <form>
                 <mat-form-field color="primary" ngClass="form-input">
-                    <input matInput [(ngModel)]="userData.Username" placeholder={{user.Username}} type="text"
-                        name="Username" required>
+                    <input matInput [(ngModel)]="userData.Username" placeholder="username" type="text" name="Username"
+                        required>
                 </mat-form-field><br>
                 <mat-form-field ngClass="form-input">
                     <input matInput [(ngModel)]="userData.Password"
@@ -15,32 +15,24 @@
                         required>
                 </mat-form-field><br>
                 <mat-form-field ngClass="form-input">
-                    <input matInput [(ngModel)]="userData.Email" type="email" placeholder={{user.Email}} name="Email"
-                        required>
+                    <input matInput [(ngModel)]="userData.Email" type="email" placeholder="email" name="Email" required>
                 </mat-form-field><br>
                 <mat-form-field>
-                    <input matInput [(ngModel)]="userData.Birthday" type="date"
-                        placeholder={{this.dateConvert(user.Birthday)}} name="Birthday">
+                    <input matInput [(ngModel)]="userData.Birthday" type="date" placeholder="Optional" name="Birthday">
                 </mat-form-field>
-                <!-- <mat-form-field>
-                    <mat-label>Current Birthday: {{this.dateConvert(userData.Birthday)}}</mat-label>
-                    <input matInput [matDatepicker]="picker" [(ngModel)]="userData.Birthday" name="birthday">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field> -->
             </form>
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button color="primary" (click)="backToMovies()">
                 Back
             </button>
-            <button mat-raised-button color="accent">
+            <button mat-raised-button color="accent" (click)="updateUserProfile()">
                 Update User Info
             </button>
         </mat-card-actions>
     </mat-card>
     <!-- TODO add get favorites function -->
-    <!-- <mat-card *ngFor="let movie of movies;" ngClass="movie-card">
+    <!-- <mat-card *ngFor="let movie of favorites;" ngClass="movie-card">
         <mat-card-header>
             <mat-card-title>{{movie.Title}}</mat-card-title>
             <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
