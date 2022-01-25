@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class UserLoginComponent implements OnInit {
   @Input() userCredentials = { Username: '', Password: '' };
 
   constructor(
-    public apiLogin: UserRegistrationService,
+    public apiLogin: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginComponent>,
     public snackBar: MatSnackBar,
     public router: Router) { }

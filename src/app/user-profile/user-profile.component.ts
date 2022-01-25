@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserRegistrationService } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -16,7 +16,7 @@ export class UserProfileComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
-    public fetchApiData: UserRegistrationService,
+    public fetchApiData: FetchApiDataService,
     public router: Router,
     public snackBar: MatSnackBar
   ) { }

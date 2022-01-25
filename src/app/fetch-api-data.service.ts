@@ -8,7 +8,7 @@ const apiUrl = 'https://jakesmoviedb.herokuapp.com/';
 
 @Injectable({ providedIn: 'root' })
 
-export class UserRegistrationService {
+export class FetchApiDataService {
   constructor(private http: HttpClient) {
   }
 
@@ -29,6 +29,11 @@ export class UserRegistrationService {
     return body || {};
   }
 
+  /**
+   * function that calls the myFlix API and returns all movie objects
+   * @function getAllMovies
+   * @returns {array of movie objects}
+   */
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {
@@ -39,6 +44,13 @@ export class UserRegistrationService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  /**
+   * function that asks for a username and returns the user object 
+   * relating to that username
+   * @function getUser
+   * @param {string} username 
+   * @returns {object} user object
+   */
   getUser(username: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(`${apiUrl}users/${username}`, {
@@ -51,6 +63,12 @@ export class UserRegistrationService {
     );
   }
 
+  /**
+   * takes object of user data and returns confirmation that user was registered
+   * @function userRegister
+   * @param {object} userData 
+   * @returns {string} string response
+   */
   userRegister(userData: any): Observable<any> {
     console.log(userData);
     return this.http.post(apiUrl + 'users', userData,
@@ -61,6 +79,12 @@ export class UserRegistrationService {
     );
   }
 
+  /**
+   * takes login data and returns confirmation or login error
+   * @function loginUser
+   * @param {object} loginData 
+   * @returns {string} string confirmation of login
+   */
   loginUser(loginData: any): Observable<any> {
     return this.http.post(apiUrl + 'login', loginData).pipe(
       map(this.extractResponseData),
@@ -68,6 +92,12 @@ export class UserRegistrationService {
     );
   }
 
+  /**
+   * takes user data object and returns the updated user data
+   * @function updateUser
+   * @param {object} userData 
+   * @returns {object} updated user info
+   */
   updateUser(userData: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.put(`${apiUrl}users/${userData.Username}`, userData, {
@@ -80,6 +110,12 @@ export class UserRegistrationService {
     );
   }
 
+  /**
+   * deletes given username and corresponding user data from database
+   * @function deleteUser
+   * @param {string} username 
+   * @returns {string} confirmation of user deletion
+   */
   deleteUser(username: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.delete(`${apiUrl}users/${username}`, {
@@ -92,6 +128,12 @@ export class UserRegistrationService {
     );
   }
 
+  /**
+   * gets favorites array of given username
+   * @function getFavorites
+   * @param {string} username 
+   * @returns {array} array of movie objects
+   */
   getFavorites(username: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(`${apiUrl}users/${username}/FavoriteMovies`, {
@@ -104,6 +146,14 @@ export class UserRegistrationService {
     );
   }
 
+  /**
+   * takes username and movie id and returns confirmation movie has been added
+   * to the username's favorites array
+   * @function addFavorite
+   * @param {string} username 
+   * @param {string} movie 
+   * @returns {object} returns object which confirms movie has been added
+   */
   addFavorite(username: any, movie: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.post(`${apiUrl}users/${username}/movies/${movie}`, movie, {
@@ -116,6 +166,14 @@ export class UserRegistrationService {
     );
   }
 
+  /**
+   * takes username and movie id and returns confirmation movie has been removed
+   * from the username's favorites array
+   * @function removeFavorite
+   * @param {string} username 
+   * @param {string} movie 
+   * @returns {object} returns object which confirms movie has been removed
+   */
   removeFavorite(username: any, movie: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.delete(`${apiUrl}users/${username}/movies/${movie}`, {
