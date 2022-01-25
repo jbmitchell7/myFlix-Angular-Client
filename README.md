@@ -14,4 +14,4 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 This project uses my custom-built API (found at https://github.com/jbmitchell7/myFlix), to display sample movie data using an Angular front-end.
 
-![image of movies screen](https://github.com/jbmitchell7/myFlix-Angular-Client/blob/src/assets/movies.PNG)
+![image of movies screen](https://github.com/jbmitchell7/myFlix-Angular-Client/blob/main/src/assets/movies.PNG)
