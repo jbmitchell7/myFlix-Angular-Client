@@ -1,12 +1,22 @@
+@import '../movie-card/movie-card.component.scss';
+
 .profile {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .profile-card {
     padding: 50px;
+    width: fit-content;
+    margin-bottom: 50px;
 }
 
 .form-input {
     width: 300px;
+}
+
+.favorites-header {
+    color: white;
 }

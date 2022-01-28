@@ -34,12 +34,14 @@
             </button>
         </mat-card-actions>
     </mat-card>
-    <!-- TODO add get favorites function -->
-    <!-- <mat-card *ngFor="let movie of favorites;" ngClass="movie-card">
+    <h2 ngClass="favorites-header">Favorite Movies</h2>
+    <div ngClass="movie-list">
+    <mat-card *ngFor="let movie of favorites;" ngClass="movie-card">
         <mat-card-header>
             <mat-card-title>{{movie.Title}}</mat-card-title>
             <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
         </mat-card-header>
         <img src={{movie.ImagePath}} alt={{movie.Title}} />
-    </mat-card> -->
+    </mat-card>
+    </div>
 </div>
