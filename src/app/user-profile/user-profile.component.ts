@@ -37,13 +37,22 @@ export class UserProfileComponent implements OnInit {
     return date
   }
 
+    getUserFavorites(): void {
+        this.fetchApiData.getFavorites(localStorage.getItem('user')).subscribe((resp: any) => {
+            this.favorites = resp;
+            console.log(this.favorites);
+            return this.favorites;
+        });
+    }
+
   getUserProfile(): void {
     this.fetchApiData.getUser(localStorage.getItem('user')).subscribe((resp: any) => {
       this.user = resp;
-      this.favorites = resp.FavoriteMovies;
+      this.getUserFavorites();
       return this.user;
     });
   }
+    
 
   updateUserProfile(): void {
     this.fetchApiData.updateUser(this.userData).subscribe((res) => {
