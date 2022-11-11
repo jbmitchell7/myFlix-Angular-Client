@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-const apiUrl = 'https://myflixdb.onrender.com';
+const apiUrl = 'https://myflixdb.onrender.com/';
 
 @Injectable({ providedIn: 'root' })
 
